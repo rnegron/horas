@@ -1,4 +1,1 @@
-export default () => {
-  // pass ;)
-  // console.log('Hello, World!');
-};
+export default () => {};

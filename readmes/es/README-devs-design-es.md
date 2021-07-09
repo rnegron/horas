@@ -1,6 +1,6 @@
 ## Developers
 
-Este proyecto no sería posible sin la colaboración de otros developers que han donado su tiempo para crear esta aplicación. Si encuentras un error por favor crea un [issue](https://github.com/SoPR/horas/issues) y si puedes arreglarlo te invitamos a hacer y someter un pull request.
+Este proyecto no sería posible sin la colaboración de otros developers que han donado su tiempo para crear esta aplicación. Si encuentras un error por favor crea un [issue](https://github.com/Code4PuertoRico/horas/issues) y si puedes arreglarlo te invitamos a hacer y someter un pull request.
 
 Tenemos un [chat room - #horas-project](https://startupsofpr.slack.com/messages/C4HAXGZL5) para facilitar la comunicación y coordinación del equipo. Si necesitas una cuenta puedes [crearla aqui](https://bit.ly/sopr-slack).
 
@@ -9,7 +9,7 @@ Tenemos un [chat room - #horas-project](https://startupsofpr.slack.com/messages/
 
 Si necesitas ideas de como ayudar puede ver la lista de tareas pendientes.
 
-[Github issues](https://github.com/SoPR/horas/issues)
+[Github issues](https://github.com/Code4PuertoRico/horas/issues)
 
 
 ### Para correr el proyecto
@@ -32,35 +32,25 @@ Distribuciones populares:
 
 **Mac OS**
 
-La mejor manera de utilizar Docker en Mac Os es utilizando [Docker for Mac](https://www.docker.com/docker-mac).
-
-**Windows**
-
-La mejor manera de utilizar Docker en Mac Os es utilizando [Docker for Windows](https://www.docker.com/docker-windows).
+La mejor manera de utilizar Docker en Mac OS o Windows PC es utilizando [Docker Desktop](https://www.docker.com/products/docker-desktop).
 
 ** Como crear imagenes de Horas con Docker **
 
 ```bash
 # Clonear repositorio
-$ git clone https://github.com/SoPR/horas.git
+$ git clone https://github.com/Code4PuertoRico/horas.git
 
-# Instalar dependencias para el build de JS / CSS
+
+# Copiar archivo de variables de ambiente
+$ cp .env.example .env
+
+# Instalar dependencias del frontend
 $ cd horas/static
-$ npm install  # 'yarn' si lo tienes instalado
+$ npm install
 
-# Crear la imagen de Docker.
+# Crear la imagen de Docker y correrla en un contenedor separado del terminal
 $ cd ..
-$ docker-compose build
-
-# Once the image is created you can create the container
-$ docker-compose up -d
-
-# When the containers are created and running you can then run Django manage commands
-$ docker-compose exec web python manage.py collectstatic
-
-# Migración y data inicial
-$ python manage.py migrate
-$ python manage.py loaddata apps/profiles/fixtures/admin.json
+$ docker-compose up --detach
 ```
 
 El archivo docker-compose.yml contiene toda la configuración de los servicios de Docker necesarios tener una instancia de Horas corriendo.
@@ -71,17 +61,17 @@ Abre tu browser en [http://localhost:8000/](http://localhost:8000/). Para accesa
 
 **Requisitos**
 
-- [Python 2.7](https://www.python.org/)
-- [Node.js LTS](https://nodejs.org) (incluye npm)
-- [Yarn](https://yarnpkg.com) (opcional)
+- [Python 3.7](https://www.python.org/)
+- [Pipenv](https://docs.pipenv.org/en/latest/)
+- [Node.js 14](https://nodejs.org) (incluye npm)
 
 ```bash
 # Clonear repositorio
-$ git clone https://github.com/SoPR/horas.git
+$ git clone https://github.com/Code4PuertoRico/horas.git
 
 # Instalar dependencias para el build de JS / CSS
 $ cd horas/static
-$ npm install  # 'yarn' si lo tienes instalado
+$ npm install
 
 # Copiar archivo de variables de ambiente
 $ cd ..
@@ -94,7 +84,7 @@ $ pipenv install --dev
 $ pipenv run python manage.py migrate
 $ pipenv run python manage.py loaddata apps/profiles/fixtures/admin.json
 
-# Correr server de django 
+# Correr server de django
 $ pipenv run python manage.py runserver
 ```
 
@@ -123,21 +113,14 @@ __Homebrew__
 $ brew install libmemcached
 ```
 
-__Ports__
-
-```bash
-$ sudo port install libmemcached
-```
-
 Una vez hecho esto pueden volver al paso ```$ pipenv install --dev``` y continuar con las instrucciones.
 
 #### Para correr tests
 ```
 $ pipenv run python manage.py test --configuration=Testing --verbosity=3 --noinput
 ```
-
 ## Diseñadores
 
 Tenemos un branch dedicado para compartir y colaborar sobre el diseño de la plataforma. Mantendremos el diseño más reciente en ese branch.
 
-[Design](https://github.com/SoPR/horas/tree/design) - Branch dedicado al diseño de este proyecto.
+[Design](https://github.com/Code4PuertoRico/horas/tree/design) - Branch dedicado al diseño de este proyecto.

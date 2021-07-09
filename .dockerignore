@@ -5,9 +5,6 @@
 Dockerfile
 .DS_Store
 
-.env
-.env.*
-
 Procfile
 TODO.md
 

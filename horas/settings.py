@@ -70,7 +70,6 @@ class Common(Configuration):
         "django.middleware.clickjacking.XFrameOptionsMiddleware",
         "apps.core.middleware.TimezoneMiddleware",
         "apps.core.middleware.EnsureCompleteProfileMiddleware",
-        "debug_toolbar.middleware.DebugToolbarMiddleware",
     ]
 
     TEMPLATES = [
@@ -166,6 +165,9 @@ class Development(Common):
     Common.ALLOWED_HOSTS += ["127.0.0.1", "localhost", "0.0.0.0"]
 
     INSTALLED_APPS = Common.INSTALLED_APPS + ("debug_toolbar",)
+
+    MIDDLEWARE = Common.MIDDLEWARE + ["debug_toolbar.middleware.DebugToolbarMiddleware",]
+
 
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 

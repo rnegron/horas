@@ -1,6 +1,6 @@
-#!/bin/ash
+#!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 postgres_ready(){
 python manage.py shell << END
@@ -21,13 +21,17 @@ if [ "$1" = 'serve' ]; then
     sleep 1
   done
 
-  echo "==> Running migrations..."
+  echo "==> Collecting static filles..."
   python manage.py collectstatic --noinput
+
+  echo "==> Running migrations..."
   python manage.py migrate
+
+  echo "==> Loading initial data..."
   python manage.py loaddata apps/profiles/fixtures/admin.json
 
-  echo "==> Running gunicorn server..."
-  gunicorn --bind=${BIND_ADDRESS:-0.0.0.0:8000} --workers=${WORKERS:-3} horas.wsgi
+  echo "==> Running web dev server..."
+  python manage.py runserver 0.0.0.0:8000
 else
   exec "$@"
 fi

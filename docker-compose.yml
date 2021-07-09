@@ -1,8 +1,11 @@
 version: '3'
 services:
   db:
-    image: postgres
+    image: postgres:12.7
     container_name: horas_db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
 
   web:
     container_name: horas
@@ -10,7 +13,7 @@ services:
     command: serve
     env_file:
       - .env
-    entrypoint: /usr/src/app/entrypoint.sh
+    entrypoint: /usr/src/app/entrypoint-dev.sh
     volumes:
       - .:/usr/src/app
     ports:

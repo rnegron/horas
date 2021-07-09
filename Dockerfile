@@ -1,33 +1,48 @@
-FROM python:3.7-alpine3.8
+FROM python:3.7-slim-buster as base
 
-ENV LANG en_US.utf8
-ENV PYTHONUNBUFFERED 1
-ENV PYTHONDONTWRITEBYTECODE 1
+ENV PIP_USER=1
 
-# Install build dependencies
-RUN apk add --no-cache --virtual .build-deps build-base
+ENV PYTHONUNBUFFERED=1
 
-RUN apk add --no-cache \
-        git \
-        postgresql-dev \
-        libmemcached-dev \
-        zlib-dev 
+ENV LANG en_US.UTF-8
 
-RUN mkdir -p /usr/src/app && \
-        mkdir -p /usr/src/app/static/dist && \
-        mkdir -p /usr/src/app/static/public
+ENV PATH="/home/appuser/.local/bin:$PATH"
 
-WORKDIR /usr/src/app
+RUN apt-get clean \
+        && rm -rf /var/lib/apt/lists/* \
+        && apt-get update -y
 
-RUN pip install pipenv=='2018.11.26'
+RUN apt-get install -y --no-install-recommends \
+        build-essential \
+        git
 
-COPY Pipfile Pipfile.lock /usr/src/app/
+RUN useradd --create-home appuser
 
-RUN pip install pipenv=='2018.11.26' && \
-        pipenv install --deploy --system && \
-        pip uninstall -y pipenv && \
-        rm -rf /root/.cache
+USER appuser
 
-COPY . /usr/src/app
 
-EXPOSE 8000
+FROM base as builder
+
+WORKDIR /tmp
+
+RUN pip install pipenv=='2021.5.29'
+
+COPY Pipfile Pipfile.lock /tmp/
+
+RUN pipenv install --dev
+
+RUN pipenv lock -r --dev > /tmp/requirements.txt
+
+
+FROM base
+
+WORKDIR /home/appuser
+
+RUN mkdir -p static/dist && \
+        mkdir -p static/public
+
+COPY --from=builder --chown=appuser:appuser /tmp/requirements.txt /home/appuser/
+
+RUN pip install --user -r requirements.txt
+
+COPY --chown=appuser:appuser . .

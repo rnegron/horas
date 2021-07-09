@@ -38,11 +38,12 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-static_src/
 static/admin
 static/debug_toolbar
 static/django_extensions
 static/facebook
+static/node_modules
+static/public
 
 # Installer logs
 pip-log.txt
@@ -73,9 +74,6 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
-
-static/dist
-static/public
 
 .env
 /venv/

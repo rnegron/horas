@@ -8,7 +8,7 @@ module.exports = {
     path: path.join(__dirname, "public"),
     filename: "bundle.js",
     clean: true,
-    assetModuleFilename: "img/[name].[ext]",
+    assetModuleFilename: "img/[name][ext]",
   },
   plugins: [
     new MiniCssExtractPlugin({

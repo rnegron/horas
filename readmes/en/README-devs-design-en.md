@@ -1,6 +1,6 @@
 ## Developers
 
-This project would not be possible without other developers contributing their time. If you find an error please create an [issue](https://github.com/Code4PuertoRico/horas/issues) and if you can fix it we invite you to create and submit a pull request :smile".
+This project would not be possible without other developers contributing their time. If you find an error please create an [issue](https://github.com/Code4PuertoRico/horas/issues) and if you can fix it we invite you to create and submit a pull request :smile:.
 
 We have a [chat room - #horas-project](https://startupsofpr.slack.com/messages/C4HAXGZL5) to help the team communicate and coordinate. If you need an account you can [create one here](https://bit.ly/sopr-slack).
 

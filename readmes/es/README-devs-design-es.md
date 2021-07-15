@@ -34,7 +34,7 @@ Distribuciones populares:
 
 La mejor manera de utilizar Docker en Mac OS o Windows PC es utilizando [Docker Desktop](https://www.docker.com/products/docker-desktop).
 
-** Como crear imagenes de Horas con Docker **
+** Cómo crear imágenes de `Horas` con Docker **
 
 ```bash
 # Clonear repositorio

@@ -84,7 +84,7 @@ $ pipenv install --dev
 $ pipenv run python manage.py migrate
 $ pipenv run python manage.py loaddata apps/profiles/fixtures/admin.json
 
-# Correr server de django
+# Correr servidor de django
 $ pipenv run python manage.py runserver
 ```
 

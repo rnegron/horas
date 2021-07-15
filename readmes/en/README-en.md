@@ -36,7 +36,7 @@ We have some simple rules that all must accept so that this system can be as eff
 2. If some sort of funding is necessary to cover maintenance cost for the platform donations will be accepted and 100% of them will go to covering these fees and never to the pocket of a person or company involved in the maintenance of this service.
 3. 100% transparent
     - All communication about this project will be conducted on some sort of public forum.
-    - All document about the creation, maintenance, funding of or any other activity for this platform will be made public without exceptions. This includes contracts, receipts, collaboration agreements, sponsorships, and donations. Everything will be public.
+    - All documents about the creation, maintenance, funding of or any other activity for this platform will be made public without exceptions. This includes contracts, receipts, collaboration agreements, sponsorships, and donations. Everything will be public.
     - The application code will be freely available forever.
     - All registered users will have a public profile where their availability can be viewed. Other information, like usage information, will also be available to help foster involvement and interaction with the platform.
 4. Mentors must pledge 1 hour a week to meet with a mentee in a respectable manner regardless of race, color, religion, sexual/gender identity, or social/political affiliation.
